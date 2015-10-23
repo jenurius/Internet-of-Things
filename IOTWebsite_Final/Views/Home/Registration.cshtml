@@ -1,0 +1,108 @@
+﻿@model IOTWebsite_Final.empDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand"><i class="fa fa-bolt padd"></i> &nbsp; &nbsp;</a>
+                    @Html.ActionLink("UOttawa Geeks", "LogIn", "Home", null, new { @class = "navbar-brand" })
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="center container"> 
+        <h3 class="padding-all-side">Welcome</h3>
+        <hr />
+        <section id="loginForm">
+            @using (Html.BeginForm("Registration", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            { 
+                @Html.AntiForgeryToken()
+                
+                    <div class="form-group padd-left">
+                        @Html.LabelFor(m => m.userName, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.userName, new { @class = "form-control textBox", type = "text" })
+                            @Html.ValidationMessageFor(m => m.userName)
+                        </div>
+                     </div>
+
+                     <div class="form-group padd-left">
+                          @Html.LabelFor(m => m.eMail, new { @class = "col-sm-2 control-label" })
+                            <div class="col-sm-4">
+                                @Html.TextBoxFor(m => m.eMail, new { @class = "form-control textBox", type = "text" })
+                                @Html.ValidationMessageFor(m => m.eMail)
+                            </div>
+                      </div>
+
+                      <div class="form-group padd-left">
+                            @Html.LabelFor(m => m.firstName, new { @class = "col-sm-2 control-label" })
+                            <div class="col-sm-4">
+                                @Html.TextBoxFor(m => m.firstName, new { @class = "form-control textBox", type = "text" })
+                                @Html.ValidationMessageFor(m => m.firstName)
+                            </div>
+                      </div>
+
+            <div class="form-group padd-left">
+                @Html.LabelFor(m => m.lastName, new { @class = "col-sm-2 control-label"})
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.lastName, new { @class = "form-control textBox", type = "text" })
+                    @Html.ValidationMessageFor(m => m.lastName)
+                </div>
+            </div>
+                
+            <div class="form-group padd-left">
+                @Html.LabelFor(m => m.DOB, new { @class = "col-sm-2 control-label"})
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control textBox", type = "text" })
+                    @Html.ValidationMessageFor(m => m.DOB)
+                </div>
+            </div>                
+                
+            <div class="form-group padd-left">
+                @Html.LabelFor(m => m.password, new { @class = "col-sm-2 control-label"})
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.password, new { @class = "form-control textBox", type = "text" })
+                    @Html.ValidationMessageFor(m => m.password)
+                </div>
+            </div>       
+                
+                <div class="form-group padd-left">
+                    @Html.LabelFor(m => m.confirmPassword, new { @class = "col-sm-2 control-label" })
+                    <div class="col-sm-4">
+                        @Html.TextBoxFor(m => m.confirmPassword, new { @class = "form-control textBox", type = "text" })
+                        @Html.ValidationMessageFor(m => m.confirmPassword)
+                    </div>
+                </div>         
+                    @Html.ValidationSummary(true)
+                
+                <div>
+                    <input type="submit" value="Submit" class="btn-primary" />
+                    <div class="divider" />
+                    <input type="reset" value="Cancel" class="btn-primary margin-buttons" />
+                </div>
+                
+                <div>
+                    @if (TempData["throwMessage_Register"] != null)
+                    { 
+                        <p>@TempData["throwMessage_Register"]</p>
+                    }
+                </div>
+            }
+        </section>
+    </div>
+</body>
+</html>

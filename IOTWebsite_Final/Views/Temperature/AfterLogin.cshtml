@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Layout/_LayoutPage.cshtml";
+}
+
+<div>
+    @if (Session["UserName"] != null)
+    {
+        <h2>Welcome @Session["UserName"].ToString().</h2>
+        <h3>This is our first step towards Internet of Things. We started with the temperature control.Hope things go better and we will reach our goals.</h3>
+        <h3>Hello @Session["UserName"].ToString(), you can set your preferred temperature by seelcting Preferences tab.</h3>
+    }
+</div>

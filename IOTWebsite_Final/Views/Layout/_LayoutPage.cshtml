@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+</head>
+<body class="homepage">
+    <header id="header">
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <a class="navbar-brand"><i class="fa fa-bolt padd"></i> &nbsp; &nbsp;</a>
+                        @Html.ActionLink("UOttawa Geeks", "AfterLogin", "Temperature", null, new { @class = "navbar-brand" })
+                    <div class="collapse navbar-collapse navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "AfterLogin", "Temperature")</li>
+                            <li>@Html.ActionLink("Preferences", "Preference", "Temperature")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Help", "Help", "Home")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <div class="center">
+        <footer>
+            &copy; Jenurius Mark 2015
+        </footer>
+    </div>
+</body>
+</html>

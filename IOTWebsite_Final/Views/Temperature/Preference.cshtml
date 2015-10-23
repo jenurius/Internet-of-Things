@@ -1,0 +1,47 @@
+﻿@model IOTWebsite_Final.employeePreference
+
+@{
+    Layout = "~/Views/Layout/_LayoutPage.cshtml";
+}
+
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal padding-all-side">
+            @if(@Session["PreferredTemperature"] == null)
+            { 
+                <h4>Hello @Session["UserName"], set your preferred temperature.</h4>
+            }
+            else 
+            {
+                <h4>Hello @Session["UserName"], your current preferred temperature is @Session["PreferredTemperature"].</h4>
+            }
+            <hr />
+            @Html.ValidationSummary(true)
+    
+            <div class="form-group padding-all-side">
+                @Html.LabelFor(model => model.preferredTemperature, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-2">
+                    @Html.TextBoxFor(model => model.preferredTemperature, new { @class = "form-control textBox", type = "text" })
+                    @Html.ValidationMessageFor(model => model.preferredTemperature)
+                </div>
+            </div>
+            <div>
+                @if (TempData["throwMessage"] != null) { 
+                    <p> @TempData["throwMessage"]</p>
+                }
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Set Temperature" class="btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</body>

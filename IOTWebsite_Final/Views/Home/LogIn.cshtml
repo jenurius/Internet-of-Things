@@ -1,0 +1,80 @@
+﻿@model IOTWebsite_Final.empDetail
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet of Things</title>
+    @Styles.Render("~/Content/css")
+</head>
+
+<body class="homepage">
+    <header id="header">
+        <nav class="navbar navbar-inverse" role="banner">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand"><i class="fa fa-bolt padd"></i> &nbsp; &nbsp;</a>              
+                    @Html.ActionLink("UOttawa Geeks", "LogIn", "Home", null, new { @class = "navbar-brand" })                    
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="row center">
+        <div class="col-md-8">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    
+                    <div class="padding-all-side">
+                        <h3> Login </h3>
+                        <hr />
+                    </div>
+
+                    <div class="form-group center padd-left padding-all-side">
+                        @Html.LabelFor(m => m.userName, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.userName, new { @class = "form-control textBox", type = "text" })
+                            @Html.ValidationMessageFor(m => m.userName)
+                        </div>
+                    </div>
+
+                    <div class="form-group center padd-left">
+                        @Html.LabelFor(m => m.password, new { @class = "col-sm-2 control-label" })
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(m => m.password, new { @class = "form-control textBox", type = "password" })
+                            @Html.ValidationMessageFor(m => m.password)
+                        </div>
+                    </div>
+                    @Html.ValidationSummary(true)
+                    <div>
+                        <input type="submit" value="Log In" class="btn-primary" />
+                        <div class="divider"/>
+                        <input type="reset" value="Cancel" class="btn-primary margin-buttons"/>
+                    </div>
+                    
+                    <div class="padding-all-side">
+                        <p>
+                            @Html.ActionLink("Register", "Registration"), If you are a new user.
+                        </p>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+
+    <div class="center">
+        <hr />
+        <footer>
+            <p> &copy; Jenurius Mark</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
